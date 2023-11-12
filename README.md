@@ -1,5 +1,5 @@
 Title: Harnessing the Power of Big Data Analytics in Healthcare
- ![Tux, the Linux mascot](Github 1)
+ ![Tux, the Linux mascot](Github 1.jpeg)
 In the ever-evolving landscape of healthcare, the integration of technology has become paramount in improving patient outcomes, streamlining processes, and driving advancements in medical research. One such technological frontier making significant strides is Big Data Analytics. This powerful tool is transforming the healthcare industry, providing valuable insights, and revolutionizing the way we approach patient care.
 
 *Understanding Big Data in Healthcare:*
