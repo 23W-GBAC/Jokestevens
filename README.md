@@ -5,7 +5,7 @@
  
 In the ever-evolving landscape of healthcare, the integration of technology has become paramount in improving patient outcomes, streamlining processes, and driving advancements in medical research. One such technological frontier making significant strides is Big Data Analytics. This powerful tool is transforming the healthcare industry, providing valuable insights, and revolutionizing the way we approach patient care.
 
-## *Understanding Big Data in Healthcare:*
+ *Understanding Big Data in Healthcare:*
 
 Big Data in healthcare refers to the vast volume of structured and unstructured data generated within the healthcare ecosystem. This includes electronic health records (EHRs), medical imaging, patient-generated data, and more. The sheer volume and complexity of this data make traditional methods of analysis insufficient, paving the way for the utilization of advanced analytics.
 
