@@ -1,3 +1,5 @@
+ ![Tux, the Linux mascot](https://github.com/23W-GBAC/Jokestevens/blob/main/Github%201.jpeg?raw=true)
+ 
 Title: Harnessing the Power of Big Data Analytics in Healthcare
 
  ![Tux, the Linux mascot](https://github.com/23W-GBAC/Jokestevens/blob/main/Github%201.jpeg?raw=true)
