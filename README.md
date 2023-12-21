@@ -9,9 +9,10 @@ Orbem, a spin-off from the Technical University of Munich and headquartered in M
  In this article, we will delve into the critical aspects of Orbem's mission and initiatives, exploring how they are spearheading innovative solutions to address the pressing challenges of the global food crisis.
 
 Orbem is dedicated to constructing cutting-edge, AI-powered imaging solutions designed to address some of the most challenging global issues. They specialize in generating innovative insights through their technology, empowering businesses to effectively tackle intricate problems. One of their pioneering solutions, the Orbem Genus, merges Magnetic Resonance Imaging with Deep Learning. This innovative approach allows for the development of a rapid, cost-effective, and widely accessible MRI system designed for the classification of chicken eggs before they hatch. In the realm of poultry, Orbem's technology has the potential to introduce billions of eggs into the food market, eliminate the unnecessary culling of billions of 1-day-old chicks, and concurrently establish new revenue streams.
+![image](https://github.com/23W-GBAC/Jokestevens/assets/148862801/9f07f074-3668-4718-8f91-b230a4628273)
 
 
-
+The industry, as a whole, faces inefficiencies and underutilization of resources due to the inability to gain insights beneath the surface of products, processes, and data. The integration of imaging technologies, including magnetic resonance imaging, with artificial intelligence is a key strategy employed to overcome these challenges. This approach enables the generation of novel insights and offers solutions to the most complex problems faced by customers. The primary product developed in this context focuses on the classification of chicken eggs before hatching. By doing so, billions of eggs that would otherwise go to waste are repurposed for use as food, showcasing a commitment to sustainability and resource optimization.
 
 
 
