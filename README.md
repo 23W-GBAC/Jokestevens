@@ -1,7 +1,8 @@
 theme: jekyll-theme-cayman
  
 # Game-Changer Alert: How Orbem is Shaping the Future of Food Security Worldwide
-![image](https://github.com/23W-GBAC/Jokestevens/assets/148862801/cbcef353-7703-44d1-bc7e-fe30db367f1d)
+![image](https://github.com/23W-GBAC/Jokestevens/assets/148862801/e4354645-b254-4acc-b67d-a554ba7635df)
+
 
  Fertile or infertile? Male or Female?
 The mordern poultry industry doesn’t have the answers to these questions so they’re forced to waste 9 billion infertile eggs and kill over 7 billion 1-day-old male chicks on a yearly basis.
