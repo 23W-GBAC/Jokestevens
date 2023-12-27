@@ -5,7 +5,7 @@ Welcome to the forefront of a healthcare revolution! In an era marked by unprece
 From diagnostic breakthroughs to personalized treatment plans, join us on a journey to explore how these trailblazing companies are changing the face of medicine and ushering in a new era of precision, efficiency, and improved patient outcomes.
 Below, we unveil a curated list of visionary companies at the forefront of the AI-powered healthcare revolution. These trailblazers are harnessing the capabilities of artificial intelligence to tackle complex medical challenges, ushering in a new era of possibilities. Discover how these companies are making a lasting impact, transforming the way we diagnose, treat, and approach healthcare.
 
-## 1. Orbem ai
+## 1. Orbem AI
 
 ![image](https://github.com/23W-GBAC/Jokestevens/assets/148862801/e4354645-b254-4acc-b67d-a554ba7635df)
 
