@@ -79,4 +79,154 @@ Until then, happy coding!
 
 
 
+# Week 2: Unraveling HTML Mysteries with BeautifulSoup
+Hello! Onajokeoghene Piomoki Stevens here, back for another thrilling week of collaborative coding. Last time, we set the stage with Python environment setup and initiated our journey into web scraping with the introduction of the BeautifulSoup library. Today, our adventure takes a deeper dive into HTML mysteries, error encounters, and the elegant solutions that follow.
+
+## The Web Scraping Quest Continues
+🚀 Introduction to BeautifulSoup
+Before we plunge into the intricacies of code, let's take a moment to appreciate the magic that BeautifulSoup brings to the world of web scraping. This Python library is like a wizard's wand, transforming the seemingly chaotic HTML documents into an orderly structure that we can traverse with ease. It's a pivotal tool in our arsenal, enabling us to extract meaningful data from the vast expanse of the internet.
+
+💻 Code Exploration - Web Scraping Basics
+Our journey unfolds with a basic web scraping script employing BeautifulSoup. Here's the initial code:
+
+#Week 2: Web Scraping Basics with BeautifulSoup
+import requests
+from bs4 import BeautifulSoup
+
+#Function to scrape titles from a website
+def scrape_titles(url):
+    try:
+        # Make an HTTP request
+        response = requests.get(url)
+        response.raise_for_status()
+
+        # Intentional error: Forgetting to create a BeautifulSoup object
+        titles = response.find_all('h2')
+
+        # Display the titles
+        print("Titles:")
+        for title in titles:
+            print(title.text)
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error making the HTTP request: {e}")
+
+# Example usage
+website_url = "https://example.com"
+scrape_titles(website_url)
+🚨 Error 1: Forgetting to Create a BeautifulSoup Object
+Explanation:
+Our first hurdle—missing a crucial step by forgetting to create a BeautifulSoup object. Without it, the subsequent find_all method won't function as expected.
+
+Solution:
+To remedy this, let's introduce the creation of a BeautifulSoup object:
+
+#Create a BeautifulSoup object
+soup = BeautifulSoup(response.content, 'html.parser')
+titles = soup.find_all('h2')
+Now, with the inclusion of this line, our script adeptly navigates and parses the HTML content using the magic of BeautifulSoup.
+
+🛠️ Error 2: Handling HTML Elements That May Not Exist
+Our quest wouldn't be complete without addressing scenarios where specified HTML elements might not exist on the page.
+
+#Function to scrape titles with improved error handling
+def scrape_titles_improved(url):
+    try:
+        # Make an HTTP request
+        response = requests.get(url)
+        response.raise_for_status()
+
+        # Create a BeautifulSoup object
+        soup = BeautifulSoup(response.content, 'html.parser')
+
+        # Intentional error: Using try-except to handle potential non-existence of titles
+        try:
+            titles = soup.find_all('h2')
+
+            # Display the titles
+            print("Titles:")
+            for title in titles:
+                print(title.text)
+
+        except AttributeError:
+            print("No 'h2' titles found on the page.")
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error making the HTTP request: {e}")
+
+# Example usage
+scrape_titles_improved(website_url)
+🚨 Error 3: Using try-except for Wrong Exception
+Explanation:
+In this iteration, a try-except block was used to handle the potential non-existence of titles, but a mistake was made—we used AttributeError instead of Exception.
+
+Solution:
+Let's rectify this by using except Exception as e instead:
+
+           except Exception as e:
+           print("An error occurred:", e)
+Now, our script gracefully handles situations where the specified HTML elements may not be present.
+
+🌐 Exploring the Landscape of Web Scraping
+As we deepen our understanding of web scraping, it's crucial to acknowledge the vastness of the web and the diverse structures that HTML documents can take. BeautifulSoup empowers us to navigate this intricate landscape, but challenges often arise when dealing with real-world websites.
+
+🧭 Navigating Through Multiple Pages
+Our next frontier in web scraping involves traversing multiple pages. Let's extend our script to scrape titles from a series of pages.
+
+
+ #Function to scrape titles from multiple pages
+          def scrape_titles_multiple_pages(base_url, num_pages):
+          for page_num in range(1, num_pages + 1):
+          page_url = f"{base_url}?page={page_num}"
+         scrape_titles_improved(page_url)
+
+#Example usage
+base_website_url = "https://example.com/articles"
+num_of_pages = 3
+scrape_titles_multiple_pages(base_website_url, num_of_pages)
+In this enhanced script, we iterate through a specified number of pages, appending the page number to the base URL. This showcases how we can adapt our scraping techniques to cover expansive content distributed across multiple pages.
+
+🕵️ Extracting Detailed Information
+Our web scraping journey wouldn't be complete without delving into the extraction of detailed information. Let's extend our script to scrape not just titles but also additional details like publication dates and authors.
+#Function to scrape detailed information from a website
+def scrape_detailed_info(url):
+    try:
+        # Make an HTTP request
+        response = requests.get(url)
+        response.raise_for_status()
+
+        # Create a BeautifulSoup object
+        soup = BeautifulSoup(response.content, 'html.parser')
+
+        # Extract titles, authors, and publication dates
+        titles = soup.find_all('h2')
+        authors = soup.find_all('span', class_='author')
+        dates = soup.find_all('span', class_='date')
+
+        # Display the detailed information
+        print("Detailed Information:")
+        for i in range(len(titles)):
+            print(f"Title: {titles[i].text}")
+            print(f"Author: {authors[i].text}")
+            print(f"Publication Date: {dates[i].text}")
+            print("\n")
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error making the HTTP request: {e}")
+
+#Example usage
+article_url = "https://example.com/article/123"
+scrape_detailed_info(article_url)
+Here, we enhance our script to scrape titles, authors, and publication dates. This showcases the adaptability of BeautifulSoup in extracting diverse information from HTML documents.
+
+✨ Conclusion
+Week 2 has been a riveting exploration of web scraping, filled with challenges, errors, and triumphant solutions. We've not only addressed common pitfalls but also expanded our script's capabilities to navigate multiple pages and extract detailed information.
+
+As we look ahead, the world of web scraping unfolds with endless possibilities. Join me next week as we dive into even more advanced techniques, unraveling the complexities of AJAX-based pages, handling dynamic content, and ensuring our web scraping journey reaches new heights.
+
+Until then, happy coding, keep exploring, and remember—the web scraping adventure has only just begun!
+
+
+
+
 
