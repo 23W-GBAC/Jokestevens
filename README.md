@@ -71,6 +71,6 @@ In embracing the advancements brought forth by DeepMind, we embark on a collecti
 
 
 
-Automation project: [https://github.com/23W-GBAC/Jokestevens/blob/dfc544d93fcfa179e9f7df863efd87e552634a7d/automation.md]
+## [Automation project](automation.md)
 
 Sources: ChatGPT, 
