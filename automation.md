@@ -231,3 +231,170 @@ Week 2 has been an adventure filled with mistakes, fixes, and the joy of discove
 
 Join me next week for Week 3, where we'll face the challenges of AJAX-based pages, conquer dynamic content, and maybe even tackle a captcha or two. Until then, happy coding, fellow learners!
 
+
+
+
+# Week 3: Navigating the Maze of Advanced Web Scraping
+Hey fellow learners! Onajokeoghene Piomoki Stevens here, back for Week 3 of our coding escapade. If you've been following along, you know we're not just scraping the web; we're diving deep, making mistakes, and learning some advanced techniques. This week, brace yourselves as we unravel the complexities of AJAX-based pages, wrestle with dynamic content, and yes, face off against the notorious captchas.
+
+The Learning Curve Continues
+🚀 Embracing Advanced Techniques
+As we delve into advanced web scraping, it's like stepping into a new realm. AJAX-based pages, dynamic content, and captchas—these are the challenges that separate the novice from the adept. But remember, we're here to learn, make mistakes, and come out stronger on the other side.
+
+💻 Code Exploration - Tackling AJAX-Based Pages
+Our code journey starts with AJAX-based pages. You know, those pages that love to load content asynchronously, throwing a wrench into our scraping plans.
+
+python
+Copy code
+# Week 3: Learning from AJAX Challenges
+import requests
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+#Function to scrape titles from an AJAX-based page
+def scrape_ajax_page(url):
+    try:
+        # Attempting the usual, but AJAX is a different beast
+        response = requests.get(url)
+        response.raise_for_status()
+
+        # Oh no! Intentional mistake: Trying to scrape titles without handling AJAX
+        titles = soup.find_all('h2')
+
+        # Let's see what happens
+        print("Titles:")
+        for title in titles:
+            print(title.text)
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error making the HTTP request: {e}")
+
+#Example usage
+ajax_url = "https://example.com/ajax-page"
+scrape_ajax_page(ajax_url)
+🚨 Oops! Attempting to Scrape Titles Without Handling AJAX
+Explanation:
+Well, here we are, trying to scrape titles like we did before. But AJAX has a different script, and we're about to find that out.
+
+Learning Moment:
+Realizing that traditional methods won't cut it with AJAX. Time to bring in Selenium for the big guns.
+
+
+#Using Selenium for dynamic content
+def scrape_ajax_page_selenium(url):
+    try:
+        # Let's use Selenium to load the dynamic content
+        driver = webdriver.Chrome()
+        driver.get(url)
+
+        # Waiting for the magic to happen (AJAX, do your thing)
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'ajax-loaded-content')))
+
+        # Now, we can create a BeautifulSoup object and scrape titles
+        soup = BeautifulSoup(driver.page_source, 'html.parser')
+        titles = soup.find_all('h2')
+
+        # Displaying the fruits of our labor
+        print("Titles:")
+        for title in titles:
+            print(title.text)
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+    finally:
+        # Let's not forget to close the browser
+        driver.quit()
+
+#Example usage
+scrape_ajax_page_selenium(ajax_url)
+Learning Moment:
+Using Selenium to wait for AJAX to finish its business. Now we're talking! Our script evolves as we adapt to the challenges thrown our way.
+
+🔄 Dancing with Dynamism
+As we waltz through the web scraping realm, we encounter the wild beast known as dynamic content. This isn't your average HTML; it's content that shows up fashionably late, and we need to be patient.
+
+🧩 Using Selenium to Wait for Dynamic Content
+
+#Function to scrape titles from an AJAX-based page with dynamic content
+def scrape_ajax_page_dynamic(url):
+    try:
+        # This time, we're handling dynamic content too
+        driver = webdriver.Chrome()
+        driver.get(url)
+
+        # Waiting for dynamic content to make its grand entrance
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'dynamic-content')))
+
+        # Now we create a BeautifulSoup object and scrape titles
+        soup = BeautifulSoup(driver.page_source, 'html.parser')
+        titles = soup.find_all('h2')
+
+        # Displaying the grand reveal
+        print("Titles with Dynamic Content:")
+        for title in titles:
+            print(title.text)
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+    finally:
+        # Curtains down, closing the browser
+        driver.quit()
+
+#Example usage
+dynamic_ajax_url = "https://example.com/ajax-page-with-dynamic-content"
+scrape_ajax_page_dynamic(dynamic_ajax_url)
+Learning Moment:
+Dynamic content is like a surprise party—you need to wait for it. We use Selenium to be patient and let the dynamic content shine before we scrape.
+
+📈 Scaling Up: Scraping Across Multiple Pages
+Our scraping adventure expands as we take on multiple pages. Here's our attempt to navigate through a series of AJAX-based pages.
+
+
+#Function to scrape titles from multiple AJAX-based pages
+def scrape_ajax_pages_multiple(url_template, num_pages):
+    for page_num in range(1, num_pages + 1):
+        page_url = url_template.format(page_num)
+        scrape_ajax_page_dynamic(page_url)
+
+#Example usage
+ajax_url_template = "https://example.com/ajax-page?page={}"
+num_of_ajax_pages = 3
+scrape_ajax_pages_multiple(ajax_url_template, num_of_ajax_pages)
+Learning Moment:
+Iterating through pages like a pro. Our script adapts to the challenge of handling multiple AJAX-based pages, showcasing our growing skills.
+
+🎭 Navigating the Circus of Captchas
+And then, there are captchas—a real circus in the world of web scraping. But, like any circus act, there's a trick to it.
+
+
+#Function to scrape titles while facing the challenge of captchas
+def scrape_with_captcha_handling(url):
+    try:
+        # Uh-oh, a wild captcha appears!
+        raise Exception("Captcha Challenge")
+
+    except Exception as e:
+        print(f"Captcha encountered. Handling with a solution: {e}")
+
+        # An example of captcha handling (in a perfect world with user intervention)
+        user_response = input("Please solve the captcha and press Enter to continue.")
+        if user_response:
+            scrape_ajax_page_dynamic(url)
+
+#Example usage
+captcha_url = "https://example.com/ajax-page-with-captcha"
+scrape_with_captcha_handling(captcha_url)
+Learning Moment:
+Captcha—our arch-nemesis. In an ideal world, we'd need human intervention. But hey, we're learning the ropes of handling the unexpected.
+
+✨ Reflecting on the Journey
+Week 3 has been a rollercoaster of learning and adapting. From AJAX challenges to dancing with dynamic content and facing off against captchas, we've grown as web scrapers. It's not just about the code; it's about the journey—making mistakes, learning from them, and evolving our script as we encounter new challenges.
+
+Join me next week for the grand finale—Week 4, where we'll optimize our web scraping script, ensure scalability, and explore ways to maintain ethical and responsible web scraping practices.
+
+Until then, keep coding, keep exploring, and remember—mistakes are just stepping stones on the path to mastery!
