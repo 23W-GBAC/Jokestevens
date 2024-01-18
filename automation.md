@@ -25,14 +25,17 @@ Head over to the official Python website and get the latest version compatible w
 
 ## 2. Pip - The Gateway to Python Libraries:
  Open your terminal or command prompt and run:
-pip --version
 
+```
+pip --version
+```
 
 ## 3. Virtual Environments:
 To keep things tidy, we'll use virtual environments. Run these commands:
 
+```
 python -m venv venv
-
+```
 Activate your virtual environment:
 
 On Windows: venv\Scripts\activate
@@ -41,13 +44,14 @@ Now, your terminal prompt should don a virtual environment cape.
 
 ## 4. Library Installation:
 Install the necessary libraries with:
-
+```
 pip install requests
-
+```
 #Import necessary libraries
 import requests
 
 #Function to make an HTTP request to a website
+```
 def make_request(url):
     try:
         # Attempt to make an HTTP request to the specified URL
@@ -60,7 +64,7 @@ def make_request(url):
 
     except requests.exceptions.RequestException as e:
         print(f"Error making the HTTP request: {e}")
-
+```
 #Example usage
 website_url = "https://example.com"
 make_request(website_url)
@@ -90,6 +94,7 @@ import requests
 from bs4 import BeautifulSoup
 
 #Function to scrape titles from a website
+```
 def scrape_titles(url):
     try:
         # Make an HTTP request
@@ -107,7 +112,7 @@ def scrape_titles(url):
 
     except requests.exceptions.RequestException as e:
         print(f"Error making the HTTP request: {e}")
-
+```
 #Example usage
 website_url = "https://example.com"
 scrape_titles(website_url)
@@ -129,6 +134,7 @@ As we progress, we realize that not all websites are created equal. Some HTML el
 
 
 #Function to scrape titles with improved error handling
+```
 def scrape_titles_improved(url):
     try:
         # Making the HTTP request
@@ -152,7 +158,7 @@ def scrape_titles_improved(url):
 
     except requests.exceptions.RequestException as e:
         print(f"Error making the HTTP request: {e}")
-
+```
 #Example usage
 scrape_titles_improved(website_url)
 🚨 Error 2: Using try-except for the Wrong Exception
@@ -175,11 +181,12 @@ Our web scraping adventure expands as we modify our script to scrape titles from
 
 
 #Function to scrape titles from multiple pages
+```
 def scrape_titles_multiple_pages(base_url, num_pages):
     for page_num in range(1, num_pages + 1):
         page_url = f"{base_url}?page={page_num}"
         scrape_titles_improved(page_url)
-
+```
 #Example usage
 base_website_url = "https://example.com/articles"
 num_of_pages = 3
@@ -191,6 +198,7 @@ HTML puzzles come in many pieces. Let's adapt our script to handle the complexit
 Our web scraping prowess wouldn't be complete without extracting detailed information. Let's extend our script to scrape not just titles but also additional details like publication dates and authors.
 
 #Function to scrape detailed information from a website
+```
 def scrape_detailed_info(url):
     try:
         # Making the HTTP request
@@ -215,7 +223,7 @@ def scrape_detailed_info(url):
 
     except requests.exceptions.RequestException as e:
         print(f"Error making the HTTP request: {e}")
-
+```
 #Example usage
 article_url = "https://example.com/article/123"
 scrape_detailed_info(article_url)
@@ -251,6 +259,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 #Function to scrape titles from an AJAX-based page
+```
 def scrape_ajax_page(url):
     try:
         # Attempting the usual, but AJAX is a different beast
@@ -267,7 +276,7 @@ def scrape_ajax_page(url):
 
     except requests.exceptions.RequestException as e:
         print(f"Error making the HTTP request: {e}")
-
+```
 #Example usage
 ajax_url = "https://example.com/ajax-page"
 scrape_ajax_page(ajax_url)
@@ -280,6 +289,7 @@ Realizing that traditional methods won't cut it with AJAX. Time to bring in Sele
 
 
 #Using Selenium for dynamic content
+```
 def scrape_ajax_page_selenium(url):
     try:
         # Let's use Selenium to load the dynamic content
@@ -304,7 +314,7 @@ def scrape_ajax_page_selenium(url):
     finally:
         # Let's not forget to close the browser
         driver.quit()
-
+```
 #Example usage
 scrape_ajax_page_selenium(ajax_url)
 Learning Moment:
@@ -316,6 +326,7 @@ As we waltz through the web scraping realm, we encounter the wild beast known as
 🧩 Using Selenium to Wait for Dynamic Content
 
 #Function to scrape titles from an AJAX-based page with dynamic content
+```
 def scrape_ajax_page_dynamic(url):
     try:
         # This time, we're handling dynamic content too
@@ -340,7 +351,7 @@ def scrape_ajax_page_dynamic(url):
     finally:
         # Curtains down, closing the browser
         driver.quit()
-
+```
 #Example usage
 dynamic_ajax_url = "https://example.com/ajax-page-with-dynamic-content"
 scrape_ajax_page_dynamic(dynamic_ajax_url)
@@ -369,6 +380,7 @@ And then, there are captchas—a real circus in the world of web scraping. But, 
 
 
 #Function to scrape titles while facing the challenge of captchas
+```
 def scrape_with_captcha_handling(url):
     try:
         # Uh-oh, a wild captcha appears!
@@ -381,7 +393,7 @@ def scrape_with_captcha_handling(url):
         user_response = input("Please solve the captcha and press Enter to continue.")
         if user_response:
             scrape_ajax_page_dynamic(url)
-
+```
 #Example usage
 captcha_url = "https://example.com/ajax-page-with-captcha"
 scrape_with_captcha_handling(captcha_url)
@@ -412,11 +424,12 @@ import requests
 from bs4 import BeautifulSoup
 
 #Function to scrape titles and details from multiple pages
+```
 def scrape_titles_and_details(base_url, num_pages):
     for page_num in range(1, num_pages + 1):
         page_url = f"{base_url}?page={page_num}"
         scrape_detailed_info(page_url)
-
+```
 #Example usage
 base_website_url = "https://example.com/articles"
 num_of_pages = 5
@@ -430,11 +443,13 @@ While we're eager to gather information, it's crucial to avoid over-scraping and
 import time
 
 #Adding a delay between requests
+```
 def scrape_titles_and_details_delayed(base_url, num_pages):
     for page_num in range(1, num_pages + 1):
         page_url = f"{base_url}?page={page_num}"
         scrape_detailed_info(page_url)
-        time.sleep(1)  # Adding a 1-second delay between requests
+       time.sleep(1)  # Adding a 1-second delay between requests
+```
 Learning Moment:
 We're not just coders; we're responsible web citizens. Adding a delay shows respect for the websites we interact with.
 
@@ -444,6 +459,7 @@ As our script becomes more powerful, we must also be mindful of ethical consider
 🚦 Respecting Robots.txt
 
 #Checking for the presence of robots.txt before scraping
+```
 def check_robots_txt(url):
     try:
         # Constructing the robots.txt URL
@@ -459,7 +475,7 @@ def check_robots_txt(url):
 
     except requests.exceptions.RequestException as e:
         print(f"Error making the HTTP request: {e}")
-
+```
 #Example usage
 website_url = "https://example.com"
 check_robots_txt(website_url)
@@ -469,6 +485,7 @@ Before we scrape, let's be good guests. Checking robots.txt is like knocking on 
 ⚖️ Understanding Website Policies and Terms of Service
 
 #Checking website policies and terms of service
+```
 def check_website_policies(url):
     try:
         # Making the HTTP request
@@ -488,7 +505,7 @@ def check_website_policies(url):
 
     except requests.exceptions.RequestException as e:
         print(f"Error making the HTTP request: {e}")
-
+```
 #Example usage
 check_website_policies(website_url)
 Learning Moment:
