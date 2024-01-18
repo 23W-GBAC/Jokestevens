@@ -398,3 +398,110 @@ Week 3 has been a rollercoaster of learning and adapting. From AJAX challenges t
 Join me next week for the grand finale—Week 4, where we'll optimize our web scraping script, ensure scalability, and explore ways to maintain ethical and responsible web scraping practices.
 
 Until then, keep coding, keep exploring, and remember—mistakes are just stepping stones on the path to mastery!
+
+
+# Week 4: The Grand Finale - Scaling Up and Ethical Scraping Practices
+Hello fellow coding comrades! Onajokeoghene Piomoki Stevens back with you for the grand finale, Week 4 of our web scraping adventure. We've come a long way, faced errors, conquered HTML mysteries, and now it's time to level up our script. In this ultimate week, we'll explore how to optimize our web scraping script, ensure scalability, and delve into the realm of ethical and responsible scraping practices.
+
+## The Climax of Our Coding Journey
+🚀 Optimizing for Success
+As we embark on the final leg of our journey, optimization becomes key. We want our script to be swift, efficient, and ready for whatever the web throws at it.
+
+💻 Code Exploration - Scaling Up the Script
+Our journey begins with scaling up our script to handle larger datasets and more complex scenarios:
+
+
+### Week 4: Scaling Up the Script (with a dash of optimization)
+import requests
+from bs4 import BeautifulSoup
+
+#Function to scrape titles and details from multiple pages
+def scrape_titles_and_details(base_url, num_pages):
+    for page_num in range(1, num_pages + 1):
+        page_url = f"{base_url}?page={page_num}"
+        scrape_detailed_info(page_url)
+
+#Example usage
+base_website_url = "https://example.com/articles"
+num_of_pages = 5
+scrape_titles_and_details(base_website_url, num_of_pages)
+Learning Moment:
+Optimization doesn't mean just speed; it means making our script versatile enough to handle various scenarios. Now, we're not just scraping titles; we're diving into details, page after page.
+
+🔄 Avoiding the Pitfalls of Over-Scraping
+While we're eager to gather information, it's crucial to avoid over-scraping and putting unnecessary strain on websites. Let's introduce a delay:
+
+import time
+
+#Adding a delay between requests
+def scrape_titles_and_details_delayed(base_url, num_pages):
+    for page_num in range(1, num_pages + 1):
+        page_url = f"{base_url}?page={page_num}"
+        scrape_detailed_info(page_url)
+        time.sleep(1)  # Adding a 1-second delay between requests
+Learning Moment:
+We're not just coders; we're responsible web citizens. Adding a delay shows respect for the websites we interact with.
+
+🌐 Ethical Scraping Practices
+As our script becomes more powerful, we must also be mindful of ethical considerations. We're not here to overwhelm or harm; we're here to learn and gather information responsibly.
+
+🚦 Respecting Robots.txt
+
+#Checking for the presence of robots.txt before scraping
+def check_robots_txt(url):
+    try:
+        # Constructing the robots.txt URL
+        robots_url = f"{url}/robots.txt"
+
+        # Making the HTTP request
+        response = requests.get(robots_url)
+        response.raise_for_status()
+
+        # Displaying the content of robots.txt
+        print("Robots.txt Content:")
+        print(response.text)
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error making the HTTP request: {e}")
+
+#Example usage
+website_url = "https://example.com"
+check_robots_txt(website_url)
+Learning Moment:
+Before we scrape, let's be good guests. Checking robots.txt is like knocking on the door before entering—it's polite and respects the rules set by the website.
+
+⚖️ Understanding Website Policies and Terms of Service
+
+#Checking website policies and terms of service
+def check_website_policies(url):
+    try:
+        # Making the HTTP request
+        response = requests.get(url)
+        response.raise_for_status()
+
+        # Extracting and displaying website policies and terms of service
+        soup = BeautifulSoup(response.content, 'html.parser')
+        policies = soup.find('a', href='/policies')
+        terms = soup.find('a', href='/terms')
+
+        print("Website Policies:")
+        print(policies['href'] if policies else "Not found")
+
+        print("Terms of Service:")
+        print(terms['href'] if terms else "Not found")
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error making the HTTP request: {e}")
+
+#Example usage
+check_website_policies(website_url)
+Learning Moment:
+Let's be informed users. Checking website policies and terms of service ensures we understand the rules of engagement.
+
+✨ Conclusion: A Journey Well-Traveled
+And there you have it, fellow learners! Week 4, the grand finale of our web scraping adventure. We've optimized our script, embraced ethical practices, and learned the importance of responsibility in the world of web scraping.
+
+As you continue your coding journey, remember that each line of code is a step toward mastery. Keep exploring, keep learning, and most importantly, code with respect for the digital world.
+
+Until our paths cross again, happy coding!
+
