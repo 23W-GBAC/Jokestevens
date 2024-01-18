@@ -320,8 +320,6 @@ scrape_ajax_page_selenium(ajax_url)
 Learning Moment:
 Using Selenium to wait for AJAX to finish its business. Now we're talking! Our script evolves as we adapt to the challenges thrown our way.
 
-🔄 Dancing with Dynamism
-As we waltz through the web scraping realm, we encounter the wild beast known as dynamic content. This isn't your average HTML; it's content that shows up fashionably late, and we need to be patient.
 
 🧩 Using Selenium to Wait for Dynamic Content
 
