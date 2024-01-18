@@ -21,7 +21,7 @@ Roll up your sleeves and get ready for the first step: setting up the Python env
 
 # Crafting Your Python Oasis
 ## 1. Installing Python:
-Head over to the official Python website and get the latest version compatible with your operating system. Follow the installation wizard to download python
+Head over to the official Python website and get the latest version compatible with your operating system. Follow the installation wizard to download python.
 
 ## 2. Pip - The Gateway to Python Libraries:
  Open your terminal or command prompt and run:
