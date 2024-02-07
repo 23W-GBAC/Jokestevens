@@ -4,7 +4,7 @@ Hello! I'm Onajokeoghene Piomoki Stevens, a first-semester student eagerly navig
 
 📝 Introduction to the Script:
 
-In our first collaborative coding session, I've crafted a Python scaimed at automating web scraping and content aggregation for healthcare organizations using AI. This script is your ticket to streamlining the process of gathering information for your blog posts.
+In our first collaborative coding session, I've crafted a Python script aimed at automating web scraping. This script is your ticket to streamlining the process of gathering information for your blog posts.
 
 🐍 Script Language: Python
 
@@ -12,7 +12,7 @@ Before we dive into the intricacies, let's establish that the language powering 
 
 # The Repetitive Challenge: Why choosing automation is the way forward
 In the realm of health informatics, where the pace of innovation is relentless, staying current with the latest advancements is paramount. My blog post on healthcare organizations leveraging AI demanded a meticulous exploration of diverse sources—company websites, press releases, and industry publications. However, as I manually scoured the web for information, the monotony of the task became evident. Each website visit, each copied paragraph, each repeated action added up, consuming valuable time that could be better spent analyzing and interpreting the gathered data.
-This repetitive challenge served as a catalyst for change. I envisioned a more efficient and streamlined approach, one where automation could liberate me from the shackles of monotony and empower me to focus on the essence of my blog post: providing valuable insights into the intersection of AI and healthcare. I yearned for a more efficient way to gather insights into how healthcare organizations are utilizing AI. The solution? Automation.
+This repetitive challenge served as a catalyst for change. I envisioned a more efficient and streamlined approach, one where automation could liberate me from the shackles of monotony and empower me to focus on the essence of my blog post: providing valuable insights into the intersection of AI and healthcare. I yearned for a more efficient way to gather insights. The solution? Automation.
 The repetitive nature of content gathering ignited the spark. I envisioned a world where automation could liberate me from the mundane, allowing more time for thoughtful analysis and interpretation of the gathered data. And thus, the journey to automate web scraping and content aggregation began.
 
 ## Week 1: Setting the Scene - Introduction and Python Environment Setup
