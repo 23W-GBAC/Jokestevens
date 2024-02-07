@@ -259,134 +259,70 @@ As we delve into advanced web scraping, it's like stepping into a new realm. AJA
 💻 Code Exploration - Tackling AJAX-Based Pages
 Our code journey starts with AJAX-based pages. You know, those pages that love to load content asynchronously, throwing a wrench into our scraping plans.
 
-python
-Copy code
 # Week 3: Learning from AJAX Challenges
-import requests
-from bs4 import BeautifulSoup
+In this automation project, I leverage Selenium and BeautifulSoup to scrape real-time weather data from AccuWeather, a prime example of a website with dynamically updated content. Weather data, due to its inherently fluctuating nature, is updated frequently, making it an ideal candidate for practicing web scraping on sites with AJAX-based, dynamic content.
+
+The script initiates a Selenium WebDriver to interact with the AccuWeather website, ensuring accurate simulation of a user's browsing experience. This is crucial for accessing content that is loaded dynamically through JavaScript. The WebDriver waits for specific elements to appear, indicating that the AJAX content has been loaded.
+
+Once the dynamic content is loaded, BeautifulSoup is employed to parse the HTML of the page. The script specifically targets elements that represent nearby weather locations, extracting both their names and corresponding URLs. This demonstration of extracting specific data points from a dynamically changing webpage showcases the powerful combination of Selenium for web interaction and BeautifulSoup for HTML parsing.
+
+```
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from bs4 import BeautifulSoup
+```
+
+#Declare variable to hold website with AJAX data  
+```
+ajax_url = 'https://www.accuweather.com'
+```
 
 #Function to scrape titles from an AJAX-based page
 ```
-def scrape_ajax_page(url):
-    try:
-        # Attempting the usual, but AJAX is a different beast
-        response = requests.get(url)
-        response.raise_for_status()
-
-        # Oh no! Intentional mistake: Trying to scrape titles without handling AJAX
-        titles = soup.find_all('h2')
-
-        # Let's see what happens
-        print("Titles:")
-        for title in titles:
-            print(title.text)
-
-    except requests.exceptions.RequestException as e:
-        print(f"Error making the HTTP request: {e}")
-```
-#Example usage
-ajax_url = "https://example.com/ajax-page"
-scrape_ajax_page(ajax_url)
-🚨 Oops! Attempting to Scrape Titles Without Handling AJAX
-Explanation:
-Well, here we are, trying to scrape titles like we did before. But AJAX has a different script, and we're about to find that out.
-
-Learning Moment:
-Realizing that traditional methods won't cut it with AJAX. Time to bring in Selenium for the big guns.
-
-
-#Using Selenium for dynamic content
-```
 def scrape_ajax_page_selenium(url):
     try:
-        # Let's use Selenium to load the dynamic content
+        # Initialize Selenium WebDriver
         driver = webdriver.Chrome()
         driver.get(url)
 
-        # Waiting for the magic to happen (AJAX, do your thing)
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'ajax-loaded-content')))
+        # Wait for the AJAX content to load
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'nearby-location')))
 
-        # Now, we can create a BeautifulSoup object and scrape titles
+        # Parse the page source with BeautifulSoup
         soup = BeautifulSoup(driver.page_source, 'html.parser')
-        titles = soup.find_all('h2')
 
-        # Displaying the fruits of our labor
-        print("Titles:")
-        for title in titles:
-            print(title.text)
+        # Find all nearby location elements
+        locations = soup.find_all('a', class_='nearby-location weather-card')
+
+        # Extract and print the location names and URLs
+        print("Nearby Locations and URLs:")
+        for location in locations:
+            location_name = location.find('span', class_='text title no-wrap').text.strip()
+            location_url = location['href']
+            print(f"{location_name}: {ajax_url}{location_url}")
 
     except Exception as e:
         print(f"Error: {e}")
 
     finally:
-        # Let's not forget to close the browser
+        # Close the WebDriver
         driver.quit()
-```
-#Example usage
+
+# Example Usage
 scrape_ajax_page_selenium(ajax_url)
-Learning Moment:
-Using Selenium to wait for AJAX to finish its business. Now we're talking! Our script evolves as we adapt to the challenges thrown our way.
-
-
-🧩 Using Selenium to Wait for Dynamic Content
-
-#Function to scrape titles from an AJAX-based page with dynamic content
 ```
-def scrape_ajax_page_dynamic(url):
-    try:
-        # This time, we're handling dynamic content too
-        driver = webdriver.Chrome()
-        driver.get(url)
 
-        # Waiting for dynamic content to make its grand entrance
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'dynamic-content')))
-
-        # Now we create a BeautifulSoup object and scrape titles
-        soup = BeautifulSoup(driver.page_source, 'html.parser')
-        titles = soup.find_all('h2')
-
-        # Displaying the grand reveal
-        print("Titles with Dynamic Content:")
-        for title in titles:
-            print(title.text)
-
-    except Exception as e:
-        print(f"Error: {e}")
-
-    finally:
-        # Curtains down, closing the browser
-        driver.quit()
-```
-#Example usage
-dynamic_ajax_url = "https://example.com/ajax-page-with-dynamic-content"
-scrape_ajax_page_dynamic(dynamic_ajax_url)
 Learning Moment:
 Dynamic content is like a surprise party—you need to wait for it. We use Selenium to be patient and let the dynamic content shine before we scrape.
 
-📈 Scaling Up: Scraping Across Multiple Pages
-Our scraping adventure expands as we take on multiple pages. Here's our attempt to navigate through a series of AJAX-based pages.
+By implementing this script, users can gain insights into handling modern web pages that rely heavily on JavaScript for content rendering, a common challenge in web scraping endeavors.
 
+#PLEASE NOTE: This code is tailored to match the DOM (Document Object Model) structure of the AccuWeather website, and thus might require modifications to suit other websites. The effectiveness of web scraping scripts is highly dependent on the specific HTML structure and dynamic content loading behaviors of the target website. Therefore, it is crucial to first understand the structure and behavior of the website intended to be scraped before automating its scraping process. This understanding will guide the selection of appropriate elements to target and the necessary wait conditions in Selenium, ensuring successful data extraction.
 
-#Function to scrape titles from multiple AJAX-based pages
-def scrape_ajax_pages_multiple(url_template, num_pages):
-    for page_num in range(1, num_pages + 1):
-        page_url = url_template.format(page_num)
-        scrape_ajax_page_dynamic(page_url)
-
-#Example usage
-ajax_url_template = "https://example.com/ajax-page?page={}"
-num_of_ajax_pages = 3
-scrape_ajax_pages_multiple(ajax_url_template, num_of_ajax_pages)
-Learning Moment:
-Iterating through pages like a pro. Our script adapts to the challenge of handling multiple AJAX-based pages, showcasing our growing skills.
-
-🎭 Navigating the Circus of Captchas
+## 🎭 Navigating the Circus of Captchas
 And then, there are captchas—a real circus in the world of web scraping. But, like any circus act, there's a trick to it.
-
 
 #Function to scrape titles while facing the challenge of captchas
 ```
@@ -403,13 +339,11 @@ def scrape_with_captcha_handling(url):
         if user_response:
             scrape_ajax_page_dynamic(url)
 ```
-#Example usage
-captcha_url = "https://example.com/ajax-page-with-captcha"
-scrape_with_captcha_handling(captcha_url)
+
 Learning Moment:
 Captcha—our arch-nemesis. In an ideal world, we'd need human intervention. But hey, we're learning the ropes of handling the unexpected.
 
-✨ Reflecting on the Journey
+## ✨ Reflecting on the Journey
 Week 3 has been a rollercoaster of learning and adapting. From AJAX challenges to dancing with dynamic content and facing off against captchas, we've grown as web scrapers. It's not just about the code; it's about the journey—making mistakes, learning from them, and evolving our script as we encounter new challenges.
 
 Join me next week for the grand finale—Week 4, where we'll optimize our web scraping script, ensure scalability, and explore ways to maintain ethical and responsible web scraping practices.
@@ -425,42 +359,39 @@ Hello fellow coding comrades! Onajokeoghene Piomoki Stevens back with you for th
 As we embark on the final leg of our journey, optimization becomes key. We want our script to be swift, efficient, and ready for whatever the web throws at it.
 
 💻 Code Exploration - Scaling Up the Script
-Our journey begins with scaling up our script to handle larger datasets and more complex scenarios:
+Our journey begins with scaling up our script to handle larger datasets and more complex scenarios.
 
 
 ### Week 4: Scaling Up the Script (with a dash of optimization)
 import requests
 from bs4 import BeautifulSoup
 
-#Function to scrape titles and details from multiple pages
+#Function to scrape titles from multiple pages
 ```
-def scrape_titles_and_details(base_url, num_pages):
-    for page_num in range(1, num_pages + 1):
-        page_url = f"{base_url}?page={page_num}"
-        scrape_detailed_info(page_url)
+def scrape_titles_multiple_pages(base_url, start_page, num_pages):
+    for page_num in range(start_page, start_page + num_pages):
+        page_url = f"{base_url}&page={page_num}"
+        print("------ ARTICLE PAGE")
+        scrape_titles_advanced(page_url)
 ```
-#Example usage
-base_website_url = "https://example.com/articles"
-num_of_pages = 5
-scrape_titles_and_details(base_website_url, num_of_pages)
+
 Learning Moment:
 Optimization doesn't mean just speed; it means making our script versatile enough to handle various scenarios. Now, we're not just scraping titles; we're diving into details, page after page.
 
 🔄 Avoiding the Pitfalls of Over-Scraping
 While we're eager to gather information, it's crucial to avoid over-scraping and putting unnecessary strain on websites. Let's introduce a delay:
 
-import time
-
 #Adding a delay between requests
 ```
-def scrape_titles_and_details_delayed(base_url, num_pages):
-    for page_num in range(1, num_pages + 1):
-        page_url = f"{base_url}?page={page_num}"
-        scrape_detailed_info(page_url)
-       time.sleep(1)  # Adding a 1-second delay between requests
+def scrape_titles_multiple_pages(base_url, start_page, num_pages):
+    for page_num in range(start_page, start_page + num_pages):
+        page_url = f"{base_url}&page={page_num}"
+        print("------ ARTICLE PAGE")
+        scrape_titles_advanced(page_url)
+        time.sleep(1)   # Adding a 1-second delay between requests
 ```
 Learning Moment:
-We're not just coders; we're responsible web citizens. Adding a delay shows respect for the websites we interact with.
+We're not just coders; we're responsible web citizens. In the updated scrape_titles_multiple_pages function code, adding a delay shows respect for the websites we interact with.
 
 🌐 Ethical Scraping Practices
 As our script becomes more powerful, we must also be mindful of ethical considerations. We're not here to overwhelm or harm; we're here to learn and gather information responsibly.
@@ -484,10 +415,12 @@ def check_robots_txt(url):
 
     except requests.exceptions.RequestException as e:
         print(f"Error making the HTTP request: {e}")
+
+# Example Usage
+# check_robots_txt('https://example.com')    # No robots.txt file Found
+check_robots_txt('https://cnn.com')        # Has a robots.txt file
 ```
-#Example usage
-website_url = "https://example.com"
-check_robots_txt(website_url)
+
 Learning Moment:
 Before we scrape, let's be good guests. Checking robots.txt is like knocking on the door before entering—it's polite and respects the rules set by the website.
 
@@ -495,6 +428,7 @@ Before we scrape, let's be good guests. Checking robots.txt is like knocking on 
 
 #Checking website policies and terms of service
 ```
+# Function for checking website policies and terms of service
 def check_website_policies(url):
     try:
         # Making the HTTP request
@@ -503,20 +437,33 @@ def check_website_policies(url):
 
         # Extracting and displaying website policies and terms of service
         soup = BeautifulSoup(response.content, 'html.parser')
-        policies = soup.find('a', href='/policies')
-        terms = soup.find('a', href='/terms')
+        policy_keywords = ['policy', 'privacy']
+        terms_keywords = ['terms', 'conditions']
+
+        policies = find_link_by_keywords(soup, policy_keywords)
+        terms = find_link_by_keywords(soup, terms_keywords)
 
         print("Website Policies:")
-        print(policies['href'] if policies else "Not found")
+        print(policies if policies else "Not found")
 
         print("Terms of Service:")
-        print(terms['href'] if terms else "Not found")
+        print(terms if terms else "Not found")
 
     except requests.exceptions.RequestException as e:
         print(f"Error making the HTTP request: {e}")
+
+# Helper Function that searches for links containing specified keywords
+def find_link_by_keywords(soup, keywords):
+    for keyword in keywords:
+        link = soup.find('a', text=lambda text: text and keyword in text.lower())
+        if link:
+            return link['href']
+    return None
+
+# Example Usage
+check_website_policies('https://cnn.com')
 ```
-#Example usage
-check_website_policies(website_url)
+
 Learning Moment:
 Let's be informed users. Checking website policies and terms of service ensures we understand the rules of engagement.
 
